@@ -19,3 +19,27 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* globals.css */
+
+.connect-wallet-btn {
+  border-radius: 9999px;            /* rounded-full */
+  background-color: #fb7185;        /* bg-rose-400 */
+  padding: 0.5rem 1rem;             /* px-4 py-2 */
+  font-size: 0.75rem;               /* text-xs */
+  font-weight: bold;                /* font-bold */
+  color: white;                     /* text-white */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.connect-wallet-btn:hover {
+  background-color: #fda4af;        /* hover:bg-rose-300 */
+}
+
+/* Responsive styles for larger screens */
+@media (min-width: 1024px) { /* lg breakpoint */
+  .connect-wallet-btn {
+    padding: 0.75rem 1.25rem;       /* lg:px-5 lg:py-3 */
+    font-size: 1rem;                /* lg:text-base */
+  }
+}

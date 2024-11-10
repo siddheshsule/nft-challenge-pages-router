@@ -1,10 +1,18 @@
-import React from 'react'
+import React from "react";
+import { useAddress, useDisconnect, ConnectWallet } from "@thirdweb-dev/react";
 
 const NFTDropPage = () => {
+  // Auth
+  const address = useAddress();
+  const disconnect = useDisconnect();
+
+
+  // ----------
+
   return (
     <>
-    {/* Left */}
-    <div className="flex h-screen flex-col lg:grid lg:grid-cols-10 ">
+      {/* Left */}
+      <div className="flex h-screen flex-col lg:grid lg:grid-cols-10 ">
         <div className="bg-gradient-to-br from-cyan-800 to-rose-500 lg:col-span-4">
           <div className="flex flex-col items-center justify-center py-2 lg:min-h-screen">
             <div className="bg-gradient-to-br mt-10 from-yellow-400 to-purple-500 p-2 rounded-xl">
@@ -34,12 +42,23 @@ const NFTDropPage = () => {
               </span>{" "}
               NFT Market Place
             </h1>
+            {
+                address ? (
+                <button onClick={disconnect} className="rounded-full bg-rose-400 px-4 py-2 rexr-xs font-bold text-white lg:px-5 lg:py-3 lg:text-base">
+                Sign Out
+                </button>
 
-            <button className="rounded-full bg-rose-400 hover:bg-rose-300 px-4 py-2 rexr-xs font-bold text-white lg:px-5 lg:py-3 lg:text-base">
-              Sign In
-            </button>
+                ):(
+                    <ConnectWallet btnTitle="Sign In" className="connect-wallet-btn"/>
+                )
+            }
+
+            
           </header>
-          <hr className="my-2 border" />
+            <hr className="my-2 border"/>
+            {address && (
+                <p className="text-center text-rose-600">You're logged in through {address.substring(0,4)}...{address.substring(address.length-4)}</p>
+            )}
 
           {/* Content */}
           <div className="mt-10 flex flex-1 flex-col items-center justify-center ">
@@ -63,7 +82,7 @@ const NFTDropPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default NFTDropPage
+export default NFTDropPage;
